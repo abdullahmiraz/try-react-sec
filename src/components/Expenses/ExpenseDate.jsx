@@ -1,17 +1,20 @@
-import './ExpenseDate.css'
+import "./ExpenseDate.css";
 
-const ExpenseDate = (props) => {
-  const month = props.date.toLocaleDateString('bn-BD', {month: 'long'});
-  const day = props.date.toLocaleDateString('bn-BD', {day: '2-digit'});
-  const year = props.date.getFullYear();
+const ExpenseDate = ({ date }) => {
+  // Create a Date object from the date string
+   console.log(new Date(date).toLocaleDateString("en-US"));
 
-  return (
-    <div className="expense-date">
-      <div className="expense-date__month">{month}</div>
-      <div className="expense-date__year">{year}</div>
-      <div className="expense-date__day">{day}</div>
-    </div>
-  );
-}
+  // Check if the date is valid
+  if (isNaN(expenseDate.getTime())) {
+    // Handle invalid date
+    return <div className="expense-date">Invalid Date</div>;
+  }
+
+  // Format the date
+  const options = { year: "numeric", month: "long", day: "2-digit" };
+  const formattedDate = expenseDate.toLocaleDateString("en-US");
+
+  return <div className="expense-date">{formattedDate}</div>;
+};
 
 export default ExpenseDate;

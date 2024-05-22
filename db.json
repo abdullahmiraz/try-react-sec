@@ -1,0 +1,64 @@
+{
+  "expenses": [
+    {
+      "id": "e1",
+      "title": "Toilet Paper",
+      "amount": 94.12,
+      "date": "2020-07-14T00:00:00.000Z"
+    },
+    {
+      "id": "e2",
+      "title": "New TV",
+      "amount": 799.49,
+      "date": "2021-02-12T00:00:00.000Z"
+    },
+    {
+      "id": "e3",
+      "title": "Car Insurance",
+      "amount": 294.67,
+      "date": "2021-02-28T00:00:00.000Z"
+    },
+    {
+      "id": "e4",
+      "title": "New Desk (Wooden)",
+      "amount": 450,
+      "date": "2021-05-12T00:00:00.000Z"
+    },
+    {
+      "id": "e5",
+      "title": "Groceries",
+      "amount": 120.15,
+      "date": "2022-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "e6",
+      "title": "Laptop",
+      "amount": 1500.99,
+      "date": "2022-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "e7",
+      "title": "Gym Membership",
+      "amount": 45.0,
+      "date": "2022-04-10T00:00:00.000Z"
+    },
+    {
+      "id": "e8",
+      "title": "Books",
+      "amount": 60.49,
+      "date": "2022-05-18T00:00:00.000Z"
+    },
+    {
+      "id": "e9",
+      "title": "Bicycle",
+      "amount": 299.99,
+      "date": "2022-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "e10",
+      "title": "Headphones",
+      "amount": 89.99,
+      "date": "2022-07-01T00:00:00.000Z"
+    }
+  ]
+}

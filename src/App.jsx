@@ -1,33 +1,33 @@
+import { useEffect, useState } from "react";
 import Expenses from "./components/Expenses/Expenses.jsx";
 import NewExpense from "./components/NewExpense/NewExpense.jsx";
 
 const App = () => {
-  const expenses = [
-    {
-      id: "e1",
-      title: "Toilet Paper",
-      amount: 94.12,
-      date: new Date(2020, 7, 14),
-    },
-    { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
-    {
-      id: "e3",
-      title: "Car Insurance",
-      amount: 294.67,
-      date: new Date(2021, 2, 28),
-    },
-    {
-      id: "e4",
-      title: "New Desk (Wooden)",
-      amount: 450,
-      date: new Date(2021, 5, 12),
-    },
-  ];
+  const [expenses, setExpenses] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/expenses`);
+        const data = await response.json();
+        setExpenses(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to run the effect only once on mount
+
+  console.log(expenses); // Logging outside useEffect for reference
 
   return (
     <div>
       <NewExpense />
-      <Expenses items={expenses} />
+      {Array.isArray(expenses) && expenses.length > 0 && (
+        <Expenses expenses={expenses} />
+      )}
     </div>
   );
 };

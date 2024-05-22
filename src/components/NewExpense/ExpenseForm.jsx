@@ -10,10 +10,15 @@ const ExpenseForm = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValue((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    // console.log(formValue);
+    if (value.trim().length !== 0) {
+      console.log(value.length);
+
+      setFormValue((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
   const handleExpenseSubmit = (e) => {
