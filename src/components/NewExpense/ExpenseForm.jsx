@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./ExpenseFrom.css";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 const ExpenseForm = () => {
   const [formValue, setFormValue] = useState({
-    name: "",
+    id: uuidv4(),
+    title: "",
     amount: "",
     date: "",
   });
@@ -21,8 +24,21 @@ const ExpenseForm = () => {
     }
   };
 
-  const handleExpenseSubmit = (e) => {
+  const handleExpenseSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      await axios.post(`http://localhost:4000/expenses`, formValue);
+      setFormValue({
+        id: uuidv4(),
+        title: "",
+        amount: "",
+        date: "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    window.location.reload();
     console.log(formValue);
   };
 
@@ -33,7 +49,7 @@ const ExpenseForm = () => {
           <label>Title</label>
           <input
             type="text"
-            name="name"
+            name="title"
             value={formValue.name}
             onChange={handleInputChange}
           />
