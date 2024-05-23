@@ -1,22 +1,20 @@
 import "./ExpenseItem.css";
-import Card from "../UI/Card.jsx";
-import ExpenseDate from "./ExpenseDate.jsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Card from "../../UI/Card";
 
-const ExpenseItem = ({ id, title, amount, date }) => {
+const ExpenseItem = ({ id, title, amount, date, filterDate }) => {
   const [formValue, setFormValue] = useState({
     id,
     title,
     amount,
     date,
   });
+  const [filteredView, setFilteredView] = useState(true); // Initially set to true to show all tasks
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (value.trim().length !== 0) {
-      console.log(value.length);
-
       setFormValue((prevState) => ({
         ...prevState,
         [name]: value,
@@ -33,35 +31,46 @@ const ExpenseItem = ({ id, title, amount, date }) => {
     }
   };
 
-  const handleDelete = async (e) => {
+  const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:4000/expenses/${id}`);
+      window.location.reload(); // Reload to reflect changes
     } catch (error) {
-      console.log(error);
+      console.error("Error deleting expense:", error);
     }
-    window.location.reload();
   };
 
+  useEffect(() => {
+    const taskDate = new Date(date).toISOString().split('T')[0];
+    if (!filterDate || taskDate <= filterDate) {
+      setFilteredView(true);
+    } else {
+      setFilteredView(false);
+    }
+  }, [date, filterDate]);
+
   return (
-    <Card className="expense-item">
-      <form onSubmit={handleSubmit}>
-        <div className="expense-item__description">
-          <input
-            className="my-task-name"
-            type="text"
-            name="title"
-            value={formValue.title}
-            onChange={handleInputChange}
-          />
-          <div>{new Date(date).toLocaleDateString("en-US")} </div>
-          <div className="expense-item__price">${amount}</div>
-        </div>
-        <button type="submit">Change Title</button>
-      </form>
-      <button onClick={handleDelete} type="">
-        Delete
-      </button>
-    </Card>
+    filteredView && (
+      <Card className="expense-item">
+        <form onSubmit={handleSubmit}>
+          <div className="expense-item__description">
+            <input
+              className="my-task-name"
+              type="text"
+              name="title"
+              value={formValue.title}
+              onChange={handleInputChange}
+            />
+            <div>
+              {new Date(date).toLocaleDateString("en-US")}
+            </div>
+            <div className="expense-item__price">${amount}</div>
+          </div>
+          <button type="submit">Change Title</button>
+        </form>
+        <button onClick={handleDelete}>Delete</button>
+      </Card>
+    )
   );
 };
 

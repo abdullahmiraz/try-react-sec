@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Expenses from "./components/Expenses/Expenses.jsx";
-import NewExpense from "./components/NewExpense/NewExpense.jsx";
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expenses from "./components/Expenses/Expenses/Expenses";
 
 const App = () => {
   const [expenses, setExpenses] = useState([]);
@@ -18,15 +18,28 @@ const App = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array to run the effect only once on mount
+  }, []);
 
-  console.log(expenses); // Logging outside useEffect for reference
+  const [filterDate, setFilterDate] = useState("");
+  console.log(new Date(filterDate).toLocaleDateString("en-US"));
 
   return (
     <div>
       <NewExpense />
+      <div
+        className="new-expense__control"
+        style={{ width: "20rem", margin: "0 auto" }}
+      >
+        <label>Filter by date</label>
+        <input
+          type="date"
+          name="filterDate"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+        />
+      </div>
       {Array.isArray(expenses) && expenses.length > 0 && (
-        <Expenses expenses={expenses} />
+        <Expenses expenses={expenses} filterDate={filterDate} />
       )}
     </div>
   );

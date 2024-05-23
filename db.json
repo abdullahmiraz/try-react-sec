@@ -4,43 +4,49 @@
       "id": "e5",
       "title": "Groceries",
       "amount": 120.15,
-      "date": "2022-01-15T00:00:00.000Z"
+      "date": "2022-01-15"
     },
     {
       "id": "e6",
       "title": "Laptop",
       "amount": 1500.99,
-      "date": "2022-03-20T00:00:00.000Z"
+      "date": "2022-03-20"
     },
     {
       "id": "e7",
       "title": "Gym Membership",
       "amount": 45,
-      "date": "2022-04-10T00:00:00.000Z"
+      "date": "2022-04-10"
     },
     {
       "id": "e8",
       "title": "Books",
       "amount": 60.49,
-      "date": "2022-05-18T00:00:00.000Z"
+      "date": "2022-05-18"
     },
     {
       "id": "e9",
       "title": "Bicycle",
       "amount": 299.99,
-      "date": "2022-06-22T00:00:00.000Z"
+      "date": "2022-06-22"
     },
     {
       "id": "e10",
       "title": "Headphonesxxx",
       "amount": 89.99,
-      "date": "2022-07-01T00:00:00.000Z"
+      "date": "2022-07-01"
     },
     {
       "id": "b9645dc8-8eee-406f-b771-b23166a31adb",
       "title": "Est autem occaecat n",
       "amount": "62",
       "date": "2026-05-15"
+    },
+    {
+      "id": "d18e16c5-538f-48aa-80d0-d764e24f4915",
+      "title": "In cupiditate aliqua",
+      "amount": "16",
+      "date": "2079-03-17"
     }
   ]
 }

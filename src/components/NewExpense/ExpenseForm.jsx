@@ -66,6 +66,7 @@ const ExpenseForm = () => {
           />
         </div>
         <div className="new-expense__control">
+          <label htmlFor="date">Date</label>
           <input
             type="date"
             min="2019-01-01"
@@ -75,6 +76,7 @@ const ExpenseForm = () => {
             onChange={handleInputChange}
           />
         </div>
+        
       </div>
       <div className="new-expense__actions">
         <button type="submit">Add Expense</button>
